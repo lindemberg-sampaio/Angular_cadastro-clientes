@@ -1,0 +1,92 @@
+<div fxLayout="row" fxLayoutAlign="center">
+    <div fxLayout="column" fxFlex="900px">
+        <form class="mt-60" #clientesFrm="ngForm" (ngSubmit)="salvarDadosCliente()">
+            <mat-card>
+
+                <mat-card-header>
+                    <mat-card-title>Dados Pessoais</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content class="mt-20">
+
+                    <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="16px">
+                        <div fxLayout="column" fxFlex="800px">
+                            <mat-form-field class="full-width">
+                                <mat-label>Nome: *</mat-label>
+                                <input type="text"
+                                       [(ngModel)]="cliente.nome"
+                                       name="nome"
+                                       placeholder="Nome do cliente"
+                                       matInput>
+                                <mat-icon matSuffix>person</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="16px">
+                        <div fxLayout="column" fxFlex="800px">
+                            <mat-form-field class="full-width">
+                                <mat-label>E-mail:</mat-label>
+                                <input type="email"
+                                       [(ngModel)]="cliente.email"
+                                       name="email"
+                                       placeholder="E-mail do cliente"
+                                       matInput>
+                                <mat-icon matSuffix>email</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="16px">
+                        <div fxLayout="column" fxFlex="400px">
+                            <mat-form-field class="full-width">
+                                <mat-label>CPF:</mat-label>
+                                <input type="text"
+                                       [(ngModel)]="cliente.cpf"
+                                       name="cpf"
+                                       placeholder="CPF do cliente"
+                                       matInput>
+                                <mat-icon matSuffix>description</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="16px">
+                        <div fxLayout="column" fxFlex="400px">
+                            <mat-form-field class="full-width">
+                                <mat-label>Data de nascimento:</mat-label>
+                                <input type="text"
+                                       [(ngModel)]="cliente.dataNascimento"
+                                       name="dataNascimento"
+                                       placeholder="Data de nascimento do cliente" 
+                                       matInput>
+                                <mat-icon matSuffix>calendar_month</mat-icon>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                </mat-card-content>
+
+                <mat-card-actions>
+
+                    <div style="align-items: center;">
+                        <button mat-flat-button color="primary" type="submit">
+                            <mat-icon>save</mat-icon>
+                            Salvar
+                        </button>
+                        <button mat-flat-button color="primary">
+                            <mat-icon>update</mat-icon>
+                            Atualizar
+                        </button>
+                        <button mat-flat-button color="accent" class="ml-5">
+                            <mat-icon>cleaning_services</mat-icon>
+                            Limpar
+                        </button>
+                    </div>
+
+                </mat-card-actions>
+
+            </mat-card>
+        </form>
+    </div>
+</div>
