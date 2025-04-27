@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Cliente } from './cliente';
 import { ClienteService } from '../cliente.service';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-cadastro',
@@ -18,6 +19,7 @@ import { ClienteService } from '../cliente.service';
            , MatInputModule
            , MatIconModule
            , MatButtonModule
+           , MatDatepickerModule
             ],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss'

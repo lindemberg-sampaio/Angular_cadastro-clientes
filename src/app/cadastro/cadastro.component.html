@@ -44,7 +44,7 @@
                                 <input type="text"
                                        [(ngModel)]="cliente.cpf"
                                        name="cpf"
-                                       placeholder="CPF do cliente"
+                                       placeholder="Apenas números"
                                        matInput>
                                 <mat-icon matSuffix>description</mat-icon>
                             </mat-form-field>
@@ -58,8 +58,9 @@
                                 <input type="text"
                                        [(ngModel)]="cliente.dataNascimento"
                                        name="dataNascimento"
-                                       placeholder="Data de nascimento do cliente" 
+                                       placeholder="dd/mm/aaaa" 
                                        matInput>
+                                
                                 <mat-icon matSuffix>calendar_month</mat-icon>
                             </mat-form-field>
                         </div>
