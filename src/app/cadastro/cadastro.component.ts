@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Cliente } from './cliente';
 import { ClienteService } from '../cliente.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -32,8 +32,8 @@ export class CadastroComponent implements OnInit {
 
   constructor(
     private service: ClienteService ,
+    private router: Router ,
     private route: ActivatedRoute
-
   ){}
 
 
@@ -52,7 +52,7 @@ export class CadastroComponent implements OnInit {
           this.atualizando = true;
           this.cliente = clienteEncontrado;
         }
-        
+
       }
 
     });
@@ -60,8 +60,19 @@ export class CadastroComponent implements OnInit {
 
 
   salvarDadosCliente(){
-    this.service.salvar(this.cliente);
-    this.cliente = Cliente.newCliente();
+
+    if (!this.atualizando) {
+      this.service.salvar(this.cliente);
+      this.cliente = Cliente.newCliente();
+
+    } else {
+      this.service.atualizar(this.cliente);
+      this.router.navigate(['/consulta']);
+    }
+  }
+
+  limparDados(){
+    console.log("Irei limpar o conteúdo dos inputs, somente!");
   }
   
   

@@ -71,15 +71,19 @@
                 <mat-card-actions>
 
                     <div style="align-items: center;">
-                        <button mat-flat-button color="primary" type="submit">
-                            <mat-icon>save</mat-icon>
-                            Salvar
-                        </button>
-                        <button mat-flat-button color="primary">
-                            <mat-icon>update</mat-icon>
-                            Atualizar
-                        </button>
-                        <button mat-flat-button color="accent" class="ml-5">
+                        @if(!atualizando)
+                        {
+                            <button mat-flat-button color="primary" type="submit">
+                                <mat-icon>save</mat-icon>
+                                Salvar
+                            </button>
+                        } @else {
+                            <button mat-flat-button color="primary">
+                                <mat-icon>update</mat-icon>
+                                Atualizar
+                            </button>
+                        }
+                        <button mat-flat-button color="accent" class="ml-5" (click)="limparDados()">
                             <mat-icon>cleaning_services</mat-icon>
                             Limpar
                         </button>
