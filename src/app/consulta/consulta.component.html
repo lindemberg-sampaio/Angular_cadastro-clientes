@@ -61,6 +61,15 @@
                         <mat-cell *matCellDef="let cliente">{{ cliente.dataNascimento }}</mat-cell>
                     </ng-container>
 
+                    <ng-container matColumnDef="acoes">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let cliente">
+                            <button type="button" mat-button color="primary" (click)="preparaEditar(cliente.id)">
+                                <mat-icon>edit_document</mat-icon>
+                            </button>
+                        </mat-cell>
+                    </ng-container>
+
 
                     <mat-header-row *matHeaderRowDef="colunasTable"></mat-header-row>
                     <mat-row *matRowDef="let cliente; columns: colunasTable;"></mat-row>

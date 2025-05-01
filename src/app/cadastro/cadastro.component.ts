@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Cliente } from './cliente';
 import { ClienteService } from '../cliente.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -24,15 +25,43 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss'
 })
-export class CadastroComponent {
+export class CadastroComponent implements OnInit {
 
   cliente : Cliente = Cliente.newCliente();
+  atualizando: boolean = false;
 
-  constructor(private service: ClienteService){}
+  constructor(
+    private service: ClienteService ,
+    private route: ActivatedRoute
+
+  ){}
+
+
+  ngOnInit(): void {
+    
+    this.route.queryParamMap.subscribe( (query: any) => {
+      
+      const params = query['params'];
+      const id = params['id'];
+
+      if(id) {
+        
+        let clienteEncontrado = this.service.buscarClientePorId(id);
+
+        if (clienteEncontrado){
+          this.atualizando = true;
+          this.cliente = clienteEncontrado;
+        }
+        
+      }
+
+    });
+  }
+
 
   salvarDadosCliente(){
     this.service.salvar(this.cliente);
-
+    this.cliente = Cliente.newCliente();
   }
   
   
