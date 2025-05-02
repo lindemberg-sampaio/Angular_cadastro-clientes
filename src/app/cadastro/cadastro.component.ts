@@ -10,6 +10,7 @@ import { Cliente } from './cliente';
 import { ClienteService } from '../cliente.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-cadastro',
@@ -21,7 +22,11 @@ import { Router, ActivatedRoute } from '@angular/router';
            , MatIconModule
            , MatButtonModule
            , MatDatepickerModule
+           , NgxMaskDirective
             ],
+  providers: [
+    provideNgxMask()
+  ],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss'
 })

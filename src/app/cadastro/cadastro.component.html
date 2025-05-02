@@ -44,6 +44,7 @@
                                 <input type="text"
                                        [(ngModel)]="cliente.cpf"
                                        name="cpf"
+                                       mask="000.000.000-00"
                                        placeholder="Apenas números"
                                        matInput>
                                 <mat-icon matSuffix>description</mat-icon>
@@ -58,6 +59,7 @@
                                 <input type="text"
                                        [(ngModel)]="cliente.dataNascimento"
                                        name="dataNascimento"
+                                       mask="00/00/0000"
                                        placeholder="dd/mm/aaaa" 
                                        matInput>
                                 
