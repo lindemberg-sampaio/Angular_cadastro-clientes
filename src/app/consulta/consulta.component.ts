@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
@@ -12,6 +12,7 @@ import { Cliente } from '../cadastro/cliente';
 import { MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { FormatadorService } from '../formatador.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-consulta',
@@ -33,6 +34,7 @@ export class ConsultaComponent implements OnInit {
   listaClientes : Cliente[] = [];
   colunasTable: string[] = ["id", "nome", "email", "cpf", "dataNascimento", "acoes"];
   nomeBusca: string = '';
+  private snack: MatSnackBar = inject(MatSnackBar);
 
 
   constructor(
@@ -67,6 +69,7 @@ export class ConsultaComponent implements OnInit {
   {
     this.service.deletar(cliente);
     this.listaClientes = this.service.pesquisarClientes('');
+    this.snack.open("Registro excluído com sucesso", 'Ok');
   }
 
 }
