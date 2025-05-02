@@ -53,12 +53,12 @@
 
                     <ng-container matColumnDef="cpf">
                         <mat-header-cell *matHeaderCellDef>CPF</mat-header-cell>
-                        <mat-cell *matCellDef="let cliente">{{ cliente.cpf }}</mat-cell>
+                        <mat-cell *matCellDef="let cliente">{{ formatador.cpf(cliente.cpf) }}</mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="dataNascimento">
                         <mat-header-cell *matHeaderCellDef>Data de nascimento</mat-header-cell>
-                        <mat-cell *matCellDef="let cliente">{{ cliente.dataNascimento }}</mat-cell>
+                        <mat-cell *matCellDef="let cliente">{{ formatador.dataNascimento(cliente.dataNascimento) }}</mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="acoes">

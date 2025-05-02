@@ -11,6 +11,7 @@ import { ClienteService } from '../cliente.service';
 import { Cliente } from '../cadastro/cliente';
 import { MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { FormatadorService } from '../formatador.service';
 
 @Component({
   selector: 'app-consulta',
@@ -23,7 +24,7 @@ import { Router } from '@angular/router';
            , MatButtonModule
            , MatTableModule
            , CommonModule
-   ],
+  ],
   templateUrl: './consulta.component.html',
   styleUrl: './consulta.component.scss'
 })
@@ -36,7 +37,8 @@ export class ConsultaComponent implements OnInit {
 
   constructor(
     private service : ClienteService,
-    private router : Router
+    private router : Router,
+    public formatador: FormatadorService
   ){
   }
 

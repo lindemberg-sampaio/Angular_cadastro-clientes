@@ -23,7 +23,7 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
            , MatButtonModule
            , MatDatepickerModule
            , NgxMaskDirective
-            ],
+  ],
   providers: [
     provideNgxMask()
   ],
