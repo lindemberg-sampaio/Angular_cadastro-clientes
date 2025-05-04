@@ -42,38 +42,23 @@
 <ol>
   <li><strong>Clone o repositório:</strong><br>
     
-    ```
     git clone https://github.com/seu-usuario/nome-do-repositorio.git
-    ```
-    
   </li>
   <li><strong>Acesse a pasta do projeto:</strong><br>
     
-    ```ruby
     cd nome-do-repositorio
-    ```
-    
   </li>
   <li><strong>Instale as dependências:</strong><br>
     
-    ```
     npm install
-    ```
-    
   </li>
   <li><strong>Execute o servidor de desenvolvimento:</strong><br>
     
-    ```
     ng serve
-    ```
-    
   </li>
   <li><strong>Acesse a aplicação em seu navegador:</strong><br>
     
-    ```
     http://localhost:4200/
-    ```
-    
   </li>
 </ol>
 
