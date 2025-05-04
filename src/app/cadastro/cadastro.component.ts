@@ -12,6 +12,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { BrasilapiService } from '../brasilapi.service';
+import { Estado, Municipio } from '../brasilapi.models';
 
 @Component({
   selector: 'app-cadastro',
@@ -36,10 +38,13 @@ export class CadastroComponent implements OnInit {
   cliente : Cliente = Cliente.newCliente();
   atualizando: boolean = false;
   private snack: MatSnackBar = inject(MatSnackBar);
+  private estados : Estado[] = [];
+  private municipios : Municipio[] = [];
 
   constructor(
-    private service: ClienteService ,
-    private router: Router ,
+    private service: ClienteService,
+    private brasilApiService : BrasilapiService,
+    private router: Router,
     private route: ActivatedRoute
   ){}
 
@@ -62,7 +67,19 @@ export class CadastroComponent implements OnInit {
 
       }
 
+      this.carregarUf();
+
     });
+  }
+
+
+  carregarUf()
+  {
+    this.brasilApiService.listarUFs().subscribe({
+      next: listaEstados => this.estados = listaEstados, // consumindo a API para popular o array
+      error: erro => console.log("Ocorreu um erro", erro)
+    });
+
   }
 
 
