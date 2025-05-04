@@ -14,6 +14,8 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BrasilapiService } from '../brasilapi.service';
 import { Estado, Municipio } from '../brasilapi.models';
+import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cadastro',
@@ -26,6 +28,8 @@ import { Estado, Municipio } from '../brasilapi.models';
            , MatButtonModule
            , MatDatepickerModule
            , NgxMaskDirective
+           , MatSelectModule
+           , CommonModule
   ],
   providers: [
     provideNgxMask()
@@ -38,8 +42,8 @@ export class CadastroComponent implements OnInit {
   cliente : Cliente = Cliente.newCliente();
   atualizando: boolean = false;
   private snack: MatSnackBar = inject(MatSnackBar);
-  private estados : Estado[] = [];
-  private municipios : Municipio[] = [];
+  estados : Estado[] = [];
+  municipios : Municipio[] = [];
 
   constructor(
     private service: ClienteService,
@@ -67,16 +71,19 @@ export class CadastroComponent implements OnInit {
 
       }
 
-      this.carregarUf();
+      this.carregarUfs();
 
     });
   }
 
 
-  carregarUf()
+  carregarUfs()
   {
     this.brasilApiService.listarUFs().subscribe({
-      next: listaEstados => this.estados = listaEstados, // consumindo a API para popular o array
+      next: (listaEstados) =>
+        (this.estados = listaEstados.sort((a, b) =>
+          a.sigla.localeCompare(b.sigla)
+        )),           // consumindo a API para popular o array, em ordem alfabética
       error: erro => console.log("Ocorreu um erro", erro)
     });
 
